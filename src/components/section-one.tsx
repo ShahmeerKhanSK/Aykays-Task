@@ -4,7 +4,7 @@ import { phone1, logo } from "@/assets/index.js";
 
 export default function SectionOne() {
   return (
-    <section className="lg:h-150 bg-gradient-to-br from-red-400 to-red-500 px-4 -mb-20 lg:mb-0 ">
+    <section className="lg:h-160 bg-gradient-to-br from-red-400 to-red-500 px-4 -mb-20 lg:mb-0 ">
       <div className="container">
         <div className="flex flex-col justify-center items-center">
           <div className="flex justify-center items-center w-full mb-6 pt-6">
@@ -21,7 +21,7 @@ export default function SectionOne() {
             </h1>
           </div>
 
-          <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-[minmax(300px,500px)_minmax(250px,1fr)] xl:grid-cols-[500px_400px] gap-8 lg:gap-12">
+          <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-[minmax(300px,500px)_minmax(250px,1fr)] xl:grid-cols-[500px_400px] gap-8 lg:gap-10">
             <div className="text-white space-y-4 lg:text-left">
               <div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -35,7 +35,7 @@ export default function SectionOne() {
                 </h1>
               </div>
 
-              <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-md  lg:mx-0 leading-relaxed font-semibold">
+              <p className="text-sm sm:text-base  text-white/90 max-w-lg space-y-0 text-base/2 leading-6 lg:mx-0  font-semibold">
                 A place where friendships grow, communities thrive, and moments
                 turn into unforgettable experiences. Whether you're looking to
                 reconnect with old friends, build new relationships, or share
@@ -43,12 +43,21 @@ export default function SectionOne() {
                 internet.
               </p>
 
-              <Button className="bg-white text-red-500 hover:bg-white/90 font-semibold px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg rounded-lg shadow-lg">
+              <Button className="bg-white text-red-500 hover:bg-white/90 font-semibold px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-md rounded-lg shadow-lg">
                 Get Started
               </Button>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-end">
+            <div className="flex items-center justify-center lg:justify-end relative">
+              <div className="absolute top-15 lg:left-0 sm:left-15 left-0 bg-white px-3 py-4 rounded-lg shadow-md flex z-20">
+                <h1 className="text-lg font-semibold">🔥Seamless Connections</h1>
+              </div>
+
+              <div className="absolute bottom-15 lg:right-0 sm:right-15 right-0 bg-white px-3 py-4 rounded-lg shadow-md flex z-20">
+                <h1 className="text-lg font-semibold">  🌍 Discover & Explore
+</h1>
+              </div>
+
               <Image
                 src={phone1}
                 alt="iPhone"

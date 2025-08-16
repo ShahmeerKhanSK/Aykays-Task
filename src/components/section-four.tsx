@@ -1,19 +1,13 @@
 export default function SectionFour() {
-  const cardStyle = {
-    borderRadius: "20px",
-    background: "#e0e0e0",
-    boxShadow: "5px 5px 10px #b8b8b8, -5px -5px 10px #ffffff",
-  };
-
   return (
-    <div className="min-h-screen bg-[#dfdfdf] py-12 px-4 sm:px-6 md:px-8">
+    <div className="bg-[#dfdfdf] py-25 px-4 sm:px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-16">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-4 sm:mb-6">
             How to Install Our App
           </h1>
-          <p className="text-sm sm:text-lg text-gray-600 max-w-2xl sm:max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg max-w-2xl sm:max-w-3xl mx-auto">
             Getting started is quick and easy! Follow these simple steps to install and start using MyBindle today.
           </p>
         </div>
@@ -37,8 +31,11 @@ export default function SectionFour() {
           <div className="text-center">
             <span className="block md:hidden text-3xl sm:text-4xl font-bold text-red-500 mb-3 sm:mb-4">01</span>
             <div
-              className="p-5 sm:p-8 flex flex-col justify-center items-center"
-              style={cardStyle}
+              className="group border-0 rounded-[20px] bg-[#e0e0e0] 
+                         shadow-[5px_5px_18px_#808080,-5px_-5px_18px_#ffffff] 
+                         hover:shadow-[inset_5px_5px_18px_#808080,inset_-5px_-5px_18px_#ffffff]
+                         transition-all duration-400 ease-in-out
+                         p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Download</h3>
               <p className="text-sm sm:text-base text-gray-600">Open Play Store or App Store</p>
@@ -49,8 +46,11 @@ export default function SectionFour() {
           <div className="text-center">
             <span className="block md:hidden text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">02</span>
             <div
-              className="p-5 sm:p-8 flex flex-col justify-center items-center"
-              style={cardStyle}
+              className="group border-0 rounded-[20px] bg-[#e0e0e0] 
+                         shadow-[5px_5px_18px_#808080,-5px_-5px_18px_#ffffff] 
+                         hover:shadow-[inset_5px_5px_18px_#808080,inset_-5px_-5px_18px_#ffffff]
+                         transition-all duration-400 ease-in-out
+                         p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Install App</h3>
               <p className="text-sm sm:text-base text-gray-600">The app will install automatically.</p>
@@ -61,8 +61,11 @@ export default function SectionFour() {
           <div className="text-center">
             <span className="block md:hidden text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">03</span>
             <div
-              className="p-5 sm:p-8 flex flex-col justify-center items-center"
-              style={cardStyle}
+              className="group border-0 rounded-[20px] bg-[#e0e0e0] 
+                         shadow-[5px_5px_18px_#808080,-5px_-5px_18px_#ffffff] 
+                         hover:shadow-[inset_5px_5px_18px_#808080,inset_-5px_-5px_18px_#ffffff]
+                         transition-all duration-400 ease-in-out
+                         p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Ready to Use</h3>
               <p className="text-sm sm:text-base text-gray-800">Sign up or log in to start exploring!</p>
