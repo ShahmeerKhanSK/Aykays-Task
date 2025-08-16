@@ -15,6 +15,10 @@ html {
   @apply transition-all duration-300 ease-in-out;
 }
 
+body {
+  font-family: var(--font-outfit);
+}
+
 
 @custom-variant dark (&:is(.dark *));
 
