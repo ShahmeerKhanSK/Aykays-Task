@@ -7,14 +7,15 @@ import SectionThree from "@/components/section-three";
 import SectionTwo from "@/components/section-tow";
 
 export default function Home() {
-  return (<div >
-    <SectionOne />
-    <SectionTwo />
-    
-    <SectionThree />
-    <SectionFour />
-    <SectionFive />
-    <SectionSix />
-    <SectionSeven /> 
-  </div>);
+  return (
+    <div className="overflow-hidden">
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
+      <SectionSix />
+      <SectionSeven />
+    </div>
+  );
 }

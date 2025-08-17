@@ -2,15 +2,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
-import {
-  camera,
-  fire,
-  lock,
-  planetEarth,
-  RealTimeChat,
-  suitcase,
-} from "@/assets";
 import { Card, CardContent } from "@/components/ui/card";
 
 gsap.registerPlugin(ScrollTrigger);

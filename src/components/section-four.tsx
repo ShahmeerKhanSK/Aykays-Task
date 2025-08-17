@@ -107,7 +107,7 @@ export default function SectionFour() {
         );
 
         // Add hover animations for step cards
-        Array.from(stepCards).forEach((step, index) => {
+        Array.from(stepCards).forEach((step) => {
           const stepElement = step as HTMLElement;
           const card = stepElement.querySelector('.group');
           

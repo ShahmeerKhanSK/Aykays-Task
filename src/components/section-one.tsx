@@ -1,135 +1,72 @@
-"use client"
-import { Button } from "./ui/button"
-import Image from "next/image"
-import SplitText from "@/components/split-text"
-import { useRef, useEffect } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { logo, phone1 } from "@/assets"
+"use client";
+import { Button } from "./ui/button";
+import Image from "next/image";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { logo, phone1 } from "@/assets";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function SectionOne() {
-  const logoRef = useRef<HTMLDivElement>(null)
-  const logoTextRef = useRef<HTMLHeadingElement>(null)
-  const phoneRef = useRef<HTMLImageElement>(null)
-  const seamlessRef = useRef<HTMLDivElement>(null)
-  const discoverRef = useRef<HTMLDivElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const paragraphRef = useRef<HTMLDivElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null);
+  const logoTextRef = useRef<HTMLHeadingElement>(null);
+  const phoneRef = useRef<HTMLImageElement>(null);
+  const seamlessRef = useRef<HTMLDivElement>(null);
+  const discoverRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const paragraphRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === "undefined") return;
 
-    gsap.set(
-      [
-        logoRef.current,
-        logoTextRef.current,
-        phoneRef.current,
-        seamlessRef.current,
-        discoverRef.current,
-        buttonRef.current,
-      ],
-      {
-        opacity: 0,
-        y: 50,
-        scale: 0.8,
-      },
-    )
+    const tl = gsap.timeline({ paused: true });
 
-    gsap.set(logoTextRef.current, { x: 100, scale: 0.8 })
-    gsap.set(phoneRef.current, { x: -100, y: 0, scale: 0.9 })
+    gsap.set([logoRef.current, logoTextRef.current, phoneRef.current, seamlessRef.current, discoverRef.current, buttonRef.current, paragraphRef.current], {
+      opacity: 0,
+    });
 
-    gsap.to(logoRef.current, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: logoRef.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    gsap.set(logoRef.current, { scale: 0.5, y: -30 });
+    gsap.set(logoTextRef.current, { x: 100 });
+    gsap.set(phoneRef.current, { x: 100, scale: 0.8 });
+    gsap.set(seamlessRef.current, { scale: 0.8, y: -20 });
+    gsap.set(discoverRef.current, { scale: 0.8, y: 20 });
+    gsap.set(buttonRef.current, { scale: 0.8, y: 20 });
 
-    gsap.to(logoTextRef.current, {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: "power2.in",
-      delay: 0.2,
-      scrollTrigger: {
-        trigger: logoTextRef.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    const headingLines = headingRef.current?.querySelectorAll('h1');
+    if (headingLines) {
+      gsap.set(headingLines, { x: -100, opacity: 0 });
+    }
 
-    gsap.to(phoneRef.current, {
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: phoneRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    gsap.set(paragraphRef.current, { y: 30, opacity: 0 });
 
-    gsap.to(seamlessRef.current, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.9,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: seamlessRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    tl.to(logoRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "power3.out" })
+      .to(logoTextRef.current, { opacity: 1, x: 0, duration: 0.7, ease: "power2.inOut" }, "-=0.4")
+      .to(phoneRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: "power2.inOut" }, "-=0.3")
+      .to(seamlessRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.inOut" }, "-=0.5")
+      .to(discoverRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.inOut" }, "-=0.4");
 
-    gsap.to(discoverRef.current, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.9,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: discoverRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    if (headingLines) {
+      headingLines.forEach((line, index) => {
+        tl.to(line, { opacity: 1, x: 0, duration: 0.8, ease: "power2.inOut" }, index === 0 ? "-=0.3" : "-=0.5");
+      });
+    }
 
-    gsap.to(buttonRef.current, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: "power2.in",
-      scrollTrigger: {
-        trigger: buttonRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
-    })
+    tl.to(paragraphRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power2.inOut" }, "-=0.5")
+      .to(buttonRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.inOut" }, "-=0.4");
+
+    ScrollTrigger.create({
+      trigger: logoRef.current,
+      start: "top 85%",
+      onEnter: () => tl.play(),
+      once: true,
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <section className="lg:h-160 bg-gradient-to-br from-red-400 to-red-500 px-4 -mb-20 lg:mb-0 ">
@@ -146,75 +83,37 @@ export default function SectionOne() {
                 priority
               />
             </div>
-            <h1 ref={logoTextRef} className="text-lg sm:text-xl lg:text-3xl font-bold text-white ml-2 sm:ml-3">
+            <h1
+              ref={logoTextRef}
+              className="text-lg sm:text-xl lg:text-3xl font-bold text-white ml-2 sm:ml-3"
+            >
               Mybindle
             </h1>
           </div>
 
           <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-[minmax(300px,500px)_minmax(250px,1fr)] xl:grid-cols-[500px_400px] gap-8 lg:gap-10">
             <div className="text-white space-y-4 lg:text-left">
-              <div>
-                <h1>
-                <SplitText
-                  text="Stay Connected"
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                  delay={80}
-                  duration={0.6}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="center"
-                  onLetterAnimationComplete={() => {}}
-                /></h1>
-                <h1><SplitText
-                  text="Stay Social"
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                  delay={80}
-                  duration={0.6}
-                  ease="power3.out"
-                  splitType="chars"
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-150px"
-                  textAlign="center"
-                /></h1>
+              <div ref={headingRef}>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  Stay Connected
+                </h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  Stay Social
+                </h1>
 
-                <h1><SplitText
-                  text="Stay You"
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                  delay={80}
-                  duration={0.6}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-200px"
-                  textAlign="center"
-                /></h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  Stay You
+                </h1>
               </div>
 
               <div ref={paragraphRef}>
-                <SplitText
-                  text="  A place where friendships grow, communities thrive, and moments
-                  turn into unforgettable experiences. Whether you're looking to
-                  reconnect with old friends, build new relationships, or share
-                  what matters most to you — MyBindle is your home on the
-                  internet."
-                  className="text-sm sm:text-base text-left  text-white/90 max-w-lg space-y-0 text-base/2 leading-6 lg:mx-0  font-semibold"
-                  delay={50}
-                  duration={0.4}
-                  ease="power3.out"
-                  splitType="words"
-                  from={{ opacity: 0, y: 20 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-250px"
-                  textAlign="left"
-                />
+                <p className="text-sm sm:text-base text-left  text-white/90 max-w-lg space-y-0 text-base/2 leading-6 lg:mx-0  font-semibold">
+                  A place where friendships grow, communities thrive, and
+                  moments turn into unforgettable experiences. Whether you're
+                  looking to reconnect with old friends, build new
+                  relationships, or share what matters most to you — MyBindle is
+                  your home on the internet.
+                </p>
               </div>
 
               <Button
@@ -230,7 +129,9 @@ export default function SectionOne() {
                 ref={seamlessRef}
                 className="absolute top-15 lg:left-0 sm:left-15 left-0 bg-white px-3 py-4 rounded-lg shadow-md flex z-20"
               >
-                <h1 className="text-lg font-semibold">🔥Seamless Connections</h1>
+                <h1 className="text-lg font-semibold">
+                  🔥Seamless Connections
+                </h1>
               </div>
 
               <div
@@ -256,5 +157,5 @@ export default function SectionOne() {
         </div>
       </div>
     </section>
-  )
+  );
 }
