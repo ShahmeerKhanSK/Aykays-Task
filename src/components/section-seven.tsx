@@ -1,51 +1,67 @@
-import { phone1, phoneSix, sectionFivePhone1, sectionFivePhone2 } from "@/assets"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { appleStore, phoneSix, playStore } from "@/assets";
+import Image from "next/image";
+import { Button } from "./ui/button";
 
 export default function SectionSeven() {
   return (
-    <div className="bg-[#dfdfdf]">
-      <div className="h-auto lg:h-170 bg-[#ff5349] rounded-4xl overflow-hidden pt-10 relative">
-        <div className="container mx-auto px-6 py-12">
-          {/* Grid for desktop, stack text+button above images for mobile */}
-          <div className="flex flex-col lg:flex-col">
-            {/* Text + Button */}
-            <div className="space-y-8 text-center lg:text-left z-10 relative">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Be the Reason
-                <br />
-                Someone Smiles Today!
-              </h1>
+    <div className="w-full flex items-center justify-center overflow-hidden">
+      <div className="h-auto md:w-[95vw] md:max-w-[1400px] w-full xl:h-170 bg-[#ff5349] rounded-4xl  pt-10 relative px-6 sm:px-10 lg:px-20">
+        <div className="container mx-auto py-12 grid grid-cols-1 max-[1207px]:grid-cols-1 xl:grid-cols-[auto_1fr] gap-10 xl:gap-0">
+          {/* Left Content */}
+          <div className="space-y-6 text-center xl:text-left">
+            <h1 className="text-3xl sm:text-5xl xl:text-6xl font-bold text-white leading-tight">
+              Join the Fun – Download
+              <br />
+              MyBindle Now!
+            </h1>
 
-              <p className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Your generosity can change lives — every donation brings hope,
-                support, and a brighter future. Give today and make a difference!
-              </p>
+            <p className="text-sm sm:text-lg xl:text-xl text-white/90 leading-relaxed">
+              Your Social Network, Your Way <br />
+              Download MyBindle Now and Be a Part <br />
+              of a Community That’s Always Evolving!
+            </p>
 
-              <Button
-                size="lg"
-                className=" z-20 bg-white text-red-500 hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Donate Now
+            {/* Store Buttons */}
+            <div className="flex flex-wrap justify-center xl:justify-start gap-4">
+              <Button className="flex items-center gap-2 rounded-full bg-white px-5 sm:px-6 py-4 sm:py-6 shadow-md hover:scale-105 transition-transform">
+                <Image src={appleStore} alt="App Store" width={24} height={24} />
+                <div className="text-left leading-none">
+                  <p className="text-[8px] sm:text-[10px] text-gray-600">
+                    DOWNLOAD ON THE
+                  </p>
+                  <p className="text-sm sm:text-base text-black">App Store</p>
+                </div>
+              </Button>
+
+              <Button className="flex items-center gap-2 rounded-full bg-white px-4 sm:px-5 py-4 sm:py-6 shadow-md hover:scale-105 transition-transform">
+                <Image src={playStore} alt="Google Play" width={24} height={24} />
+                <div className="text-left leading-none">
+                  <p className="text-[8px] sm:text-[10px] text-gray-600">
+                    Get it on
+                  </p>
+                  <p className="text-sm sm:text-base text-black">Google Play</p>
+                </div>
               </Button>
             </div>
+          </div>
 
-            {/* Images (absolutely positioned, half visible) */}
-            <div className="relative flex justify-center lg:justify-end mt-10 lg:mt-0 overflow-visible">
-              <Image
-                src={phoneSix}
-                alt="Phone mockup 2"
-                className="rounded-4xl w-40 sm:w-60 md:w-72 lg:w-90 h-auto relative z-0"
-              />
-              <Image
-                src={phone1}
-                alt="Phone mockup 1"
-                className="rounded-4xl w-50 sm:w-75 md:w-100 lg:w-110 h-auto -mt-12 md:-mt-16 lg:-mt-50 relative z-0"
-              />
-            </div>
+          {/* Right Phones */}
+          <div className="relative flex justify-center xl:block min-h-[350px] sm:min-h-[450px] md:min-h-[500px] xl:min-h-[500px]">
+            {/* Phone 1 */}
+            <Image
+              src={phoneSix}
+              alt="Phone mockup right"
+              className="absolute w-[60%] sm:w-[50%] md:w-[45%] xl:w-auto xl:-top-5 xl:-right-40 right-2 top-0"
+            />
+            {/* Phone 2 */}
+            <Image
+              src={phoneSix}
+              alt="Phone mockup left"
+              className="absolute w-[60%] sm:w-[50%] md:w-[45%] xl:w-auto xl:top-50 xl:-left-50 left-2 top-24 sm:top-32 md:top-40"
+            />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

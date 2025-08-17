@@ -83,7 +83,7 @@ export default function SectionSix() {
   const displayedTestimonials = showMore ? testimonials : testimonials.slice(0, 6)
 
   return (
-    <div className="min-h-screen bg-[#e0e0e0] py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" bg-[#e0e0e0] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8">
           What Our Users Say

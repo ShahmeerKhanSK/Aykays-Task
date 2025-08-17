@@ -10,10 +10,11 @@ export default function Home() {
   return (<div >
     <SectionOne />
     <SectionTwo />
+    
     <SectionThree />
     <SectionFour />
     <SectionFive />
     <SectionSix />
-    <SectionSeven />
+    <SectionSeven /> 
   </div>);
 }

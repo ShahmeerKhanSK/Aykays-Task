@@ -1,3 +1,7 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import {
   camera,
@@ -9,7 +13,13 @@ import {
 } from "@/assets";
 import { Card, CardContent } from "@/components/ui/card";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function SectionTwo() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
   const features = [
     {
       span: "🔥",
@@ -49,11 +59,84 @@ export default function SectionTwo() {
     },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header animation
+      gsap.fromTo(
+        headerRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Cards stagger animation
+      const cards = cardsRef.current?.children;
+      if (cards) {
+        gsap.fromTo(
+          Array.from(cards),
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.8,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        // Add hover animations for each card
+        Array.from(cards).forEach((card) => {
+          const cardElement = card as HTMLElement;
+          
+          cardElement.addEventListener("mouseenter", () => {
+            gsap.to(cardElement, {
+              y: -10,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+
+          cardElement.addEventListener("mouseleave", () => {
+            gsap.to(cardElement, {
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main className=" bg-[#e0e0e0] xl:pt-36 pt-40 pb-20  px-4">
+    <main ref={sectionRef} className=" bg-[#e0e0e0] xl:pt-36 pt-40 pb-20  px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Features That Keep You Hooked!
           </h1>
@@ -63,7 +146,7 @@ export default function SectionTwo() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <Card
               key={index}

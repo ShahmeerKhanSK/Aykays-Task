@@ -1,8 +1,19 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { twoPhones } from '@/assets';
 import Image from 'next/image';
 import React from 'react';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function SectionThree() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const cardsContainerRef = useRef<HTMLDivElement>(null);
+
     const features = [
         {
             emoji: '📽️',
@@ -39,12 +50,147 @@ export default function SectionThree() {
         </div>
     );
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Image animation - slide in from left
+            gsap.fromTo(
+                imageRef.current,
+                {
+                    opacity: 0,
+                    x: -100,
+                    scale: 0.8,
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: imageRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse",
+                    },
+                }
+            );
+
+            // Floating animation for twoPhones image (continuous)
+            if (imageRef.current) {
+                gsap.to(imageRef.current, {
+                    y: -20,              // float up
+                    rotation: 1.5,       // slight tilt
+                    duration: 3,         // smooth speed
+                    ease: "sine.inOut",  // natural ease
+                    yoyo: true,          // float back down
+                    repeat: -1,          // infinite
+                });
+            }
+
+            // Content header animation - slide in from right
+            const headerElements = contentRef.current?.querySelectorAll("h1, p");
+            if (headerElements) {
+                gsap.fromTo(
+                    Array.from(headerElements),
+                    {
+                        opacity: 0,
+                        x: 100,
+                        y: 30,
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                        stagger: 0.2,
+                        scrollTrigger: {
+                            trigger: contentRef.current,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse",
+                        },
+                    }
+                );
+            }
+
+            // Feature cards animation - stagger from bottom
+            const cards = cardsContainerRef.current?.children;
+            if (cards) {
+                gsap.fromTo(
+                    Array.from(cards),
+                    {
+                        opacity: 0,
+                        y: 50,
+                        scale: 0.9,
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: "back.out(1.7)",
+                        stagger: 0.15,
+                        scrollTrigger: {
+                            trigger: cardsContainerRef.current,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse",
+                        },
+                    }
+                );
+
+                // Add hover animations for feature cards
+                Array.from(cards).forEach((card) => {
+                    const cardElement = card as HTMLElement;
+                    
+                    cardElement.addEventListener("mouseenter", () => {
+                        gsap.to(cardElement, {
+                            x: 10,
+                            duration: 0.3,
+                            ease: "power2.out",
+                        });
+                    });
+
+                    cardElement.addEventListener("mouseleave", () => {
+                        gsap.to(cardElement, {
+                            x: 0,
+                            duration: 0.3,
+                            ease: "power2.out",
+                        });
+                    });
+                });
+            }
+
+            // Image hover animation
+            const imageElement = imageRef.current?.querySelector('img');
+            if (imageElement) {
+                imageElement.addEventListener("mouseenter", () => {
+                    gsap.to(imageElement, {
+                        scale: 1.05,
+                        rotation: 2,
+                        duration: 0.4,
+                        ease: "power2.out",
+                    });
+                });
+
+                imageElement.addEventListener("mouseleave", () => {
+                    gsap.to(imageElement, {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.4,
+                        ease: "power2.out",
+                    });
+                });
+            }
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <main className=" bg-[#dfdfdf]">
+        <main ref={sectionRef} className=" bg-[#dfdfdf]">
             <div className="container flex flex-col lg:flex-row items-center justify-center gap-4 px-3">
 
                 {/* Left Side - Image */}
-                <div className="flex justify-center lg:justify-start w-full lg:w-1/2 mb-8 lg:mb-0">
+                <div ref={imageRef} className="flex justify-center lg:justify-start w-full lg:w-1/2 mb-8 lg:mb-0">
                     <Image
                         src={twoPhones}
                         width={500}
@@ -55,7 +201,7 @@ export default function SectionThree() {
                 </div>
 
                 {/* Right Side - Content */}
-                <div className="flex-1 max-w-xl text-left">
+                <div ref={contentRef} className="flex-1 max-w-xl text-left">
                     <h1 className="md:text-4xl xl:text-5xl sm:text-4xl text-3xl font-bold text-foreground mb-4 leading-tight">
                         Where Every Click <br /> Sparks a Connection!
                     </h1>
@@ -64,7 +210,7 @@ export default function SectionThree() {
                         Give from the heart and change a life!
                     </p>
 
-                    <div className="space-y-6 sm:space-y-8">
+                    <div ref={cardsContainerRef} className="space-y-6 sm:space-y-8">
                         {features.map((feature, index) => (
                             <FeatureCard key={index} {...feature} />
                         ))}
