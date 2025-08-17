@@ -2,9 +2,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { sectionFivePhone1, sectionFivePhone2 } from "@/assets"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { sectionFivePhone1, sectionFivePhone2 } from "@/assets";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -189,14 +189,15 @@ export default function SectionFive() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-[#dfdfdf] w-full flex items-center justify-center">
-      <div className="h-auto md:w-[95vw] md:max-w-[1200px] w-full lg:h-170 bg-[#ff5349] rounded-4xl overflow-hidden pt-10 relative">
+    <div
+      ref={sectionRef}
+      className="bg-[#dfdfdf] w-full flex items-center justify-center"
+    >
+      <div className="h-auto md:w-[95vw] md:max-w-[1400px] w-full lg:h-170 bg-[#ff5349] rounded-4xl overflow-hidden pt-10 relative  px-6  lg:px-20">
         <div className="container mx-auto px-6 py-12">
-          {/* Grid for desktop, stack text+button above images for mobile */}
           <div className="flex flex-col lg:flex-col">
-            {/* Text + Button */}
-            <div ref={contentRef} className="space-y-8 text-center lg:text-left z-10 relative">
-              <h1 
+            <div ref={contentRef} className="space-y-8 text-left z-10 relative">
+              <h1
                 ref={headingRef}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
               >
@@ -205,41 +206,41 @@ export default function SectionFive() {
                 Someone Smiles Today!
               </h1>
 
-              <p 
+              <p
                 ref={paragraphRef}
-                className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0"
+                className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl lg:mx-0"
               >
                 Your generosity can change lives — every donation brings hope,
-                support, and a brighter future. Give today and make a difference!
+                support, and a brighter future. Give today and make a
+                difference!
               </p>
 
               <Button
                 ref={buttonRef}
                 size="lg"
-                className="cursor-pointer z-20 bg-white text-red-500 hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="cursor-pointer z-20 bg-white text-red-500 hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Donate Now
               </Button>
             </div>
 
-            {/* Images (absolutely positioned, half visible) */}
             <div className="relative flex justify-center lg:justify-end mt-10 lg:mt-0 overflow-visible">
               <Image
                 ref={phone2Ref}
                 src={sectionFivePhone2}
                 alt="Phone mockup 2"
-                className="rounded-4xl w-40 sm:w-60 md:w-72 lg:w-90 h-auto relative z-0"
+                className="rounded-4xl w-40 sm:w-60 md:w-72 lg:w-90 h-auto xl:-mt-25 mt-30 lg:mt-0 relative z-0"
               />
               <Image
                 ref={phone1Ref}
                 src={sectionFivePhone1}
                 alt="Phone mockup 1"
-                className="rounded-4xl w-44 sm:w-64 md:w-80 lg:w-100 h-auto -mt-12 md:-mt-16 lg:-mt-50 relative z-0"
+                className="rounded-4xl w-44 sm:w-64 md:w-80 lg:w-100 lg:h-210 lg:-right-10   lg:-mt-30 xl:-mt-90 relative z-0"
               />
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

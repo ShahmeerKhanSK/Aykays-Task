@@ -153,7 +153,7 @@ export default function SectionTwo() {
                              group-hover:scale-95"
                 >
                   <h3
-                    className="text-xl font-semibold text-gray-900 
+                    className="text-2xl font-semibold text-gray-900 
                                transition-all duration-400 ease-in-out group-hover:scale-95"
                   >
                     <span className="text-2xl">{feature.span}</span>

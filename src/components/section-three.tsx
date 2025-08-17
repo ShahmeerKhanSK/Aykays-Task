@@ -16,7 +16,7 @@ export default function SectionThree() {
 
     const features = [
         {
-            emoji: '📽️',
+            emoji: '🎥',
             title: 'Short Videos & Reels',
             description: 'Share engaging, bite-sized content that keeps everyone entertained.',
         },
@@ -41,11 +41,11 @@ export default function SectionThree() {
                        flex items-start gap-4 py-5 px-5"
         >
             <div className="flex-1">
-                <h3 className="font-semibold text-foreground mb-2">
-                    <span className="mr-2">{emoji}</span>
+                <h3 className="font-semibold text-foreground mb-2 text-xl">
+                    <span className="">{emoji}</span>
                     {title}
                 </h3>
-                <p className=" text-sm leading-relaxed">{description}</p>
+                <p className=" text-lg leading-relaxed text-gray-500">{description}</p>
             </div>
         </div>
     );

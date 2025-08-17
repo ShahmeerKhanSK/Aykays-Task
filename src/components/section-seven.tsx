@@ -64,7 +64,7 @@ export default function SectionSeven() {
             <p ref={paragraphRef} className="text-sm sm:text-lg xl:text-xl text-white/90 leading-relaxed">
               Your Social Network, Your Way <br />
               Download MyBindle Now and Be a Part <br />
-              of a Community That's Always Evolving!
+              of a Community That&apos;s Always Evolving!
             </p>
 
             {/* Store Buttons */}

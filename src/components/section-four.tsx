@@ -192,13 +192,13 @@ export default function SectionFour() {
 
   return (
     <div ref={sectionRef} className="bg-[#dfdfdf] py-25 px-4 sm:px-6 md:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div ref={headerRef} className="text-center mb-12 md:mb-16">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-4 sm:mb-6">
             How to Install Our App
           </h1>
-          <p className="text-sm sm:text-lg max-w-2xl sm:max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg max-w-2xl sm:max-w-4xl mx-auto">
             Getting started is quick and easy! Follow these simple steps to install and start using MyBindle today.
           </p>
         </div>
@@ -229,7 +229,7 @@ export default function SectionFour() {
                          p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Download</h3>
-              <p className="text-sm sm:text-base text-gray-600">Open Play Store or App Store</p>
+              <p className="text-base ">Open Play Store or App Store</p>
             </div>
           </div>
 
@@ -244,7 +244,7 @@ export default function SectionFour() {
                          p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Install App</h3>
-              <p className="text-sm sm:text-base text-gray-600">The app will install automatically.</p>
+              <p className="text-base ">The app will install automatically.</p>
             </div>
           </div>
 
@@ -259,7 +259,7 @@ export default function SectionFour() {
                          p-5 sm:p-8 flex flex-col justify-center items-center"
             >
               <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4">Ready to Use</h3>
-              <p className="text-sm sm:text-base text-gray-800">Sign up or log in to start exploring!</p>
+              <p className="text-base ">Sign up or log in to start exploring!</p>
             </div>
           </div>
         </div>

@@ -244,7 +244,7 @@ export default function SectionSix() {
           <Button
             ref={buttonRef}
             variant="outline"
-            className="px-6 sm:px-8 py-2 sm:py-3 text-gray-700 border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-colors bg-transparent text-sm sm:text-base"
+            className="px-6 sm:px-8 py-2 sm:py-3 text-[#ff5349] border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-colors bg-transparent text-sm sm:text-base"
             onClick={() => setShowMore(!showMore)}
           >
             {showMore ? "See Less" : "See More"}

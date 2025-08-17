@@ -107,9 +107,9 @@ export default function SectionOne() {
               </div>
 
               <div ref={paragraphRef}>
-                <p className="text-sm sm:text-base text-left  text-white/90 max-w-lg space-y-0 text-base/2 leading-6 lg:mx-0  font-semibold">
+                <p className="text-sm sm:text-base text-left text-white/90 max-w-lg space-y-0 text-base/2 leading-6 lg:mx-0 font-semibold">
                   A place where friendships grow, communities thrive, and
-                  moments turn into unforgettable experiences. Whether you're
+                  moments turn into unforgettable experiences. Whether you&apos;re
                   looking to reconnect with old friends, build new
                   relationships, or share what matters most to you — MyBindle is
                   your home on the internet.
